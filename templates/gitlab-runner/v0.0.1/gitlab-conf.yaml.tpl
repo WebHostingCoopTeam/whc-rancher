@@ -2,7 +2,7 @@ apiVersion: v1
 kind: ConfigMap
 metadata:
   name: gitlab-runner
-  namespace: default
+  namespace: ${NAMESPACE}
 data:
   config.toml: |
     concurrent = 4
@@ -13,5 +13,5 @@ data:
       token = "${GITLAB_TOKEN}"
       executor = "kubernetes"
       [runners.kubernetes]
-        namespace = "default"
+        namespace = "${NAMESPACE}"
         image = "busybox"
